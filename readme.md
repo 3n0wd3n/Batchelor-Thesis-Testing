@@ -1,107 +1,90 @@
-# APP-ROZVRŽENÍ README
+# Bachelor-Thesis
 
-Webová aplikace je co se týče složek rozdělena na COMPONENTS, PAGES, PUBLIC, STYLES a soubory, které se nachází mimo tyto složky jako .gitignore, next.config.js, package-lock.json, package.json. Níže budu popisovat jednotlivé složky a soubory a kním jejich význam
+Bachelor thesis at University of Palacky 2021/2022 až 2022/2023
 
-## COMPONENTS
+**Vznik nápadu na bakálřskou práci** (spíš pro mě jako záznam)
 
-Ve složce __*components*__  se nachází další podsložky __*ADMIN*__ , __*LOGIN*__ , __*STUDENT*__  -> tři hlavní role, které se na stránce objevují. Každá z nich má jednoduchý vyznám: je zde hlavní soubor, který se volá někde výš a je poskládaný z koponent, které se nacházejí ve stejné složce. Například ve složce __*COMPONENTS*__  je další složka __*STUDENT*__  a v ní je soubor __*Student.js*__ , ale taky několi dalších souborů s příponou .js. Pro nás je hlavní soubor __*Student.js*__ , který poskládáme z těch ostatních .js souborů. 
+Od začátku školního roku 2021/2022 se moje přítelkyně vydala cestou brigád na vlastní pěst a to tak, že začala doučovat Angličtinu. Když s tím začala, tak ze začátku používala aplikaci pro rozšíření jejího profilu mezi studenty, kteří hledají doučujícího (pro širší záběr zadala víc možností kontaktu od mobilu přes whatsup až po email). Ze začátku bylo fajn když ji studenti začali psát, ale postupem času bylo neúnosné udržovat s každým konverzaci na jiné platformě a domlouvat s každým individuálně hodiny, nebo řešit peníze skrz jiné sociální sítě. Napadlo mě tedy udělat informační systém, který by ji práci s domluvou a plánováním usnadnil při komunikaci se studenty. V dokumentu teď postupně rozeberu všechny aspekty tohoto informačního systému.
 
-![image](https://user-images.githubusercontent.com/47132583/230056249-cf667689-bfb5-444b-839e-d448ed31cbd2.png)
+**Odkazy**
 
-![image](https://user-images.githubusercontent.com/47132583/230056396-0b48500f-d420-4959-b2ff-5f027c0f7e36.png)
+[PROTOTYP ve Figmě](https://www.figma.com/file/EsdxbekJrScMOYiIbjaQNq/Bachelor-Thesis?node-id=0%3A1)
 
-![image](https://user-images.githubusercontent.com/47132583/230056492-a281cfd2-9238-4fd6-9fe7-9249c57a3496.png)
+[PÍSEMNÁ ČÁST v Overleaf](https://www.overleaf.com/read/btfcyfmwnmxq)
 
-## MODELS
+**Rozdělení**
 
-Ve složce __*models*__  se nachází soubory se schématy databázových kolekcí.
+Do informačního systému by se přihlašovalo skrz standartní login. Žádná registrace by nebyla, protože by správce (Bára) každému novému příchozímu dala jeho přihlašovací jméno a heslo (mohl bych generovat). Po zadání přihlašovacích údajů by se rozeznávali tři typy uživatelů.
 
-![image](https://user-images.githubusercontent.com/47132583/230056612-602c0ea4-d5a3-44a2-893b-8578a22c3971.png)
+1. typ (správce/admin)
 
-## PAGES
+> - Mazání studentů (pouze zneviditelnit a znemožnit přístup, ale pro pořeby obnovení je student stále v databázi)
+>
+> - Jednotlivým studentům možnost zapisovat/shrnout co bylo tématem minulých hodiny
+>
+> - Jednotlivým studentům psát domácí úkoly
+>
+> - Přikládat individuálně .PDF studentům do sekce s materiály (obecně soubory)
+>
+> - Individuální osnova/plán pro studenta, který lze měnit správcem podle aktuální potřeby studenta po domluvě
+>
+> - Změnit čas následující výuky
+>
+> - Možnost změnit jméno, příjmení
+>
+> - Přidat odkaz na slovíčka (flash cards)
 
-Ve složce __*pages*__ najdeme jednak další složku s názvem __*api*__ , ve které budeběžet náš server, ale dále ve složce pages najdeme čtyři důležité soubory a výčtově se jedná o __*_app.js*__, __*_document.js*__, __*dashboard.js*__, __*index.js*__, kde __*_app.js*__ je soubor, který je hlavním v celé struktuře a stará se o změnu rolí. Dallé je tu __*_document.js*__, což je speciáln soubor z NEXTJS frameworku, který nám umožňuje updatovat tagy v HTML. Tenhle soubor má úžasnou vlastnost a to tu, že tah <head /> uvnitř tohoto souboru není stejný jako v ostatních. Používáme tento souboru a speciálně hlavičkovou část pro importování kodu, který je stejný pro všechny stránky. Například když si tady nalinkujeme nějaký font můžeme ho používat pak ve všech souborech. Dalším v pořadí je soubor __*dashboard.js*__, který podle role, která přijde ze serveru vegeneruje buď komponentu s adminem, nebo ze studentem (zkrátka slouží jako rozcestník). Poslední v pořadí je __*index.js*__, který slouží jako nultá stránka, neboli login -> generují se zde komponenty pro přihlášení uživatele. 
+2. typ (student mladší 18 let)
 
-![image](https://user-images.githubusercontent.com/47132583/230056696-5700d58a-6d85-421b-a62f-7eab4657fc8e.png)
+> - Uvidí osnovu, která naznačuje cestu jakou studium bude probíhat
+>
+> - Krátké shrnutí hodin v sekci průběžné shrnutí
+>
+> - Uvidí domácí úkoly
+>
+> - Uvidí .PDF soubory pro tisk na hodiny
+>
+> - Uvidí čas následující, na kterém se domluvili, že hodina bude probíhat
+>
+> - Může se omluvit z hodiny
+>
+> - Může si změnit heslo
 
-## PUBLICK
+3. typ (student starší 18 let/rodič)
 
-Složka __*publick*__ slouží jako místo, kde jsou soubory týkající se obrázků a pod.
+> - Uvidí všechno, co student mladší 18 let plus výčet věci, které jsou pod tímto odstavcem
+>
+> - Uvidí průběžné (nejespíš měsíční) zhodnocení práce studenta (jen v případě když to bude samozřejmě pro rodiče jinak studentovi staršímu 18 let to nemá moc vyznám tam psát, protože si za to zodpovídá sám).
+>
+> - Po zádání administrátorem/správcem kolik hodin týdně proběhlo by jednoduchý algoritmus pro výpočet trojčlenky měl vyhodi číslo, kolik to dělá za tu hodinu a posčíta s početem hodin, které proběhly --> závěrem se vždy ukáže v sekci pro administrativní informace počet kolonek (takový blok, který by měl hlavní viditelnou část právě nesplacené číslo a klidně i dole pak informace o tom za co rdič teda platí --> co proběhlo za hodiny) odpovídajících nesplaceným týdnům (je to spíš takových provizorní check-list pro rodiče aby věděli co už poplatili a co jim ještě zbývá, protože se často stává, že Bára, řeší, že si rodiče nepamatují, které týdny už zaplatilia které ne a dohledává se to v mailech).
+>
+> - Informace o č.ú
 
-![publick](https://user-images.githubusercontent.com/47132583/195807038-9d50d3e9-63c3-40a5-b6aa-d719b0f048b6.png)
+Pro všechny jsou samozřejmě jiná práva a každý uvidí něco jiného.
 
-## STYLES
+_Ještě přemýšlím jestli by nebylo lepší kdyby existovali jen dvě role a to správce, student s tím, že ve studentském režimu by bylo tlačítko, které odkazuje na stránku/sekci, kde jsou administrativní informace a když by student byl mladší 18 let, tak by musel zadat heslo, které zná jen zákonný zástupce, takže bychom předešli tomu aby si tam nastavoval to na co nemá oprávnění. Nápadá mě to z důvodu toho, aby správce nemusel vytvářet účet ještě rodičům + si správce bude spíš pamatovat při vyhledávání studentů, které učí co k němu má napsat a pamatovat si ještě všechny rodiče a jejich účty by možná bylo zbytečné --> Dalo by se to obejit tak, že by správce mohl pokládat dotaz na databází, který rodič je kterého dítěte a potom by měla informaci o tom komu má psát administrativní informace. Další nevýhodou tří rolí je také to, že student, který je starší osmnácti let by měl jak uživatelské jméno a heslo pro studentskou roli, tak i uživatelské jméno a heslo pro rodičovskou/studentskou starší 18ti let._
 
-Složka __*styles*__ má jediný účel a to ten, že v ní definujeme stylování, které je pro celý projekt stejné (nastavujeme zde default).
+**Technologie**
 
-![styles](https://user-images.githubusercontent.com/47132583/195807404-c363f29c-985b-4bbd-88f0-0b26fcd9c997.png)
+Využívám NextJS (pro klientskou a serverovou část) a MongoDB (s využítím MongoDB Atlas), kde to celé hostuju na Vercelu.
 
-## UTILS
+**O CO BY SE DALA BAKÁLÁŘKA ROZŠÍŘIT**
 
-Složka __*utils*__ obsahuje dva soubory, kde první z nich __*Colors.js*__ slouží pro definování barev použitých v aplikaci a druhý __*dbMongo.js*__ obsahuje funkce, které se používají na serveru pro práci s databází.
+- REACT NATIVE
+- VYHLEDÁVÁNÍ V UŽIVATELÍCH
+- PŘIDÁVÁNÍ SOUBORŮ A ODKAZŮ VŠEM (například spelling bee, woordle apod.)
+- PLATEBNÍ BRÁNA
+- ROZPOZNÁVÁNÍ JESTLI JE ÚLOHA HYPERTEXT A JESTLI ANO, TAK BY UKOL FUNGOVAL JAKO ODKAZ
+- INTEGROVANÉ HRY (STORY DICE)
+- KALENDÁŘ NA STRANĚ ADMINA, KDE BY VIDĚL VŠECHNY HODINY CO PŘES TÝDEN MÁ ABY VĚDĚL, NA KTERÉ DNY SI MŮŽU KDYŽTAK PŘIDAT STUDENTY
+- DOČASNÁ OBNOVA HESLA PŘI ZAPOMENUTÍ ŽÁKA
+- PŘIDÁNÍ LEKCE
+- ZMĚNA LEKCE PERMANENTNĚ
+- KDYŽ BARČA ZMĚNÍ HODINU, TAK UŽIVATEL NA EMAIL DOSTANE UPOZORNĚNÍ
+- PŘÍDÁNÍ OKDAZŮ
+- MOŽNOST PŘESUNOUT ZÁPISKY V SUMARIZACÍCH NAHORU A DOLU, PROTOŽE PO SMAZÁNÍ JEDNÉ SUMARIZACE Z NĚJAKÉHO DATA UŽ BY NEMUSELY DATUMY JÍT PO SOBĚ
+- PŘI ZAKLÁDÁNÍ UŽIVATELE ŘÍCT ADMINOVI JESTLI NEDÁVÁ UŽIVATELE NA DATUM, KTERÉ UŽ MÁ NĚJAKÝ STUDENT ZABRANÉ
+- V RODIČOVSKÉM MODU MÍT VŠECHNO V ČEŠTINĚ
+- DODĚLAT UPOZORNĚNÍ KDYŽ SE BUDE JEDNAT O DESTRUKTIVNÍ AKCE (odstranění studenta například)
+- KONTAKTNÍ INFORMACE NA DÍTĚ NEBO NA ZÁKONNÉHO ZÁSTUPCE
 
-![image](https://user-images.githubusercontent.com/47132583/230057117-aaa029b9-4f8f-49d1-82fe-f65eba7af56a.png)
-
-## OSTATNÍ SOUBORY VE SLOŽCE APP
-
-Jedná se o soubory __*.gitignore*__, __*.next.config.js*__, __*package-lock.json*__, __*package.json*__. Soubor __*.gitignore*__ slouží pro blokování určitých věcí, pří komitování na Git. Dále soubor __*.next.config.js*__ nám umožňuje zvolit si, které věci budeme chtít navíc používat v NEXTJS (například já používám styledcomponents, které umožňují vytvářet si vlastní HTML tagy už s nadefinovaným stylování, které se programátor vytvoří). V neposlední řadě tu jsou dva .json soubory, z nichž jeden hlídá verze balíčků (__*package-lock.json*__) a druhý v sobě má seznam těch balíčků (__*package.json*__). 
-
-![files](https://user-images.githubusercontent.com/47132583/195809618-ff0989c8-9f3b-4125-8640-8c3919b88675.png)
-
-## SPOUŠTĚNÍ APLIKACE
-
-Pro spuštění aplikace je nutné mít stažené všechny potřebné baličky které lze najít v souboru __*package.json*__, která se nachází v adresáří __*~/BT-master(nextjs)/app/package.json*__. 
-
-![image](https://user-images.githubusercontent.com/47132583/230058864-d9761c91-ffa6-43bd-abd0-922f62596e33.png)
-
-
-Stahujeme je pomocí příkazu:
-
-    npm install <název balíčku> 
-    
-Potom už jen stačí dostat se na již zmíněnou cestu __*~/BT-master(nextjs)/app/*__, kde zadáme do konzole příkaz 
-    
-    npm run dev 
-
-a můžeme do webového prohlížeče napsat URL http://localhost:3000, která nám zobrazí naši webovou aplikaci.
-
----
-    SECTION BREAK
----
-
-# NEXTJS README
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [hello](hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
