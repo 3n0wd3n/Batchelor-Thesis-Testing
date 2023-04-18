@@ -8,7 +8,7 @@ import axios from 'axios'
 if (process.env.NODE_ENV === 'production') {
   axios.defaults.baseURL = 'https://batchelor-thesis-testing.vercel.app/api/'
 } else{
-  axios.defaults.baseURL = 'https://localhost:3000/api/'
+  axios.defaults.baseURL = 'http://localhost:3000/api/'
 }
 
 // basic component of react and nextjs
