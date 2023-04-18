@@ -16,7 +16,7 @@ Od začátku školního roku 2021/2022 se moje přítelkyně vydala cestou brig�
 
 **Rozdělení**
 
-Do informačního systému by se přihlašovalo skrz standartní login. Žádná registrace by nebyla, protože by správce (Bára) každému novému příchozímu dala jeho přihlašovací jméno a heslo (mohl bych generovat). Po zadání přihlašovacích údajů by se rozeznávali tři typy uživatelů.
+Do informačního systému se přihlašuje skrz standartní login. Žádná registrace není, protože správce (Bára) každému novému příchozímu dá jeho přihlašovací jméno a heslo (mohl bych generovat). Po zadání přihlašovacích údajů se rozeznávají tři typy uživatelů.
 
 1. typ (správce/admin)
 
@@ -57,8 +57,6 @@ Do informačního systému by se přihlašovalo skrz standartní login. Žádná
 > - Uvidí všechno, co student mladší 18 let plus výčet věci, které jsou pod tímto odstavcem
 >
 > - Uvidí průběžné (nejespíš měsíční) zhodnocení práce studenta (jen v případě když to bude samozřejmě pro rodiče jinak studentovi staršímu 18 let to nemá moc vyznám tam psát, protože si za to zodpovídá sám).
->
-> - Po zádání administrátorem/správcem kolik hodin týdně proběhlo by jednoduchý algoritmus pro výpočet trojčlenky měl vyhodi číslo, kolik to dělá za tu hodinu a posčíta s početem hodin, které proběhly --> závěrem se vždy ukáže v sekci pro administrativní informace počet kolonek (takový blok, který by měl hlavní viditelnou část právě nesplacené číslo a klidně i dole pak informace o tom za co rdič teda platí --> co proběhlo za hodiny) odpovídajících nesplaceným týdnům (je to spíš takových provizorní check-list pro rodiče aby věděli co už poplatili a co jim ještě zbývá, protože se často stává, že Bára, řeší, že si rodiče nepamatují, které týdny už zaplatilia které ne a dohledává se to v mailech).
 >
 > - Informace o č.ú
 
