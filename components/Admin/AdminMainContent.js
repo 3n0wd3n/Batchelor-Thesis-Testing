@@ -30,7 +30,7 @@ export default function MainContent({ data, setData, setNotification }) {
     if (typeof nextLesson !== 'undefined') {
         const day = getDay(nextLesson.getDay());
     }else{
-        day = null
+        const day = null
     }
 
 
