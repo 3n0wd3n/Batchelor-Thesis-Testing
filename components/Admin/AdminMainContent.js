@@ -29,7 +29,10 @@ export default function MainContent({ data, setData, setNotification }) {
     const nextLesson = React.useMemo(() => getNextLesson(allDates), [allDates])
     if (typeof nextLesson !== 'undefined') {
         const day = getDay(nextLesson.getDay());
+    }else{
+        day = null
     }
+
 
     return (
         <MainContainer>
