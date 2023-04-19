@@ -27,7 +27,7 @@ export const getAllDates = (data) => {
 export default function MainContent({ data, setData, setNotification }) {
     const allDates = React.useMemo(() => getAllDates(data), [data])
     const nextLesson = React.useMemo(() => getNextLesson(allDates), [allDates])
-    const day = undefined
+    let day = undefined
     if (typeof nextLesson !== 'undefined') {
          day = getDay(nextLesson.getDay());
     }
