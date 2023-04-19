@@ -14,6 +14,21 @@ Od začátku školního roku 2021/2022 se moje přítelkyně vydala cestou brig�
 
 [TESTOVACÍ ODKAZ přes Vercel](https://batchelor-thesis-testing.vercel.app/dashboard)
 
+**Přihlašovací údaje pro testování**
+
+***Přihlášení do admina***
+username: admin
+passwd: admin
+
+***Přihlášení do usera***
+username: jakhaj
+passwd: kuba
+
+***Přihlášení do rodiče***
+phone: 604929978
+passwd: radka
+
+
 **Rozdělení**
 
 Do informačního systému se přihlašuje skrz standartní login. Žádná registrace není, protože správce (Bára) každému novému příchozímu dá jeho přihlašovací jméno a heslo. Po zadání přihlašovacích údajů se rozeznávají tři typy uživatelů.
