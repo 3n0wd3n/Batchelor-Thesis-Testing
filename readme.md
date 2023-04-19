@@ -17,16 +17,19 @@ Od začátku školního roku 2021/2022 se moje přítelkyně vydala cestou brig�
 **Přihlašovací údaje pro testování**
 
 ***Přihlášení do admina***
-username: admin
-passwd: admin
+
+    username: admin
+    passwd: admin
 
 ***Přihlášení do usera***
-username: jakhaj
-passwd: kuba
+
+    username: jakhaj
+    passwd: kuba
 
 ***Přihlášení do rodiče***
-phone: 604929978
-passwd: radka
+
+    phone: 604929978
+    passwd: radka
 
 
 **Rozdělení**
