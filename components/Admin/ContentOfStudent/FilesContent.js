@@ -10,7 +10,6 @@ export default function FileContent({ data, setData, student, setNotification })
   const id = getCookie('userCookie')
 
   const removeFile = async (file) => {
-    const test = "a"
     await axios('user.change', {
       method: 'DELETE',
       data: {
@@ -58,7 +57,13 @@ export default function FileContent({ data, setData, student, setNotification })
                 <FileContentInput type="file" onChange={handleFileChange} />
               </FileContentChooseFile>
             </FileContentAddContainer>
-            <FileContentUploadButton onClick={handleSubmit}>upload file</FileContentUploadButton>
+            {
+              selectedFile === null
+              ?
+              <></>
+              :
+              <FileContentUploadButton onClick={handleSubmit}>upload file</FileContentUploadButton>
+            }
           </FileContentContainer>
           <FileContentBackButtonContainer onClick={() => setAdd(prevState => !prevState)}>
             <FaMinusSquare />
@@ -90,7 +95,7 @@ export default function FileContent({ data, setData, student, setNotification })
           :
           <>
             <FileContentContainer>
-              <p>You have not imported any file yet!</p>
+              <p>No files have been imported yet!</p>
               <FaFolderOpen />
 
             </FileContentContainer>

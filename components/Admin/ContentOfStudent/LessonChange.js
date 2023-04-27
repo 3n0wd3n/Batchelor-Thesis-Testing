@@ -89,6 +89,10 @@ export default function LessonChange({ data, student, setData, setNotification }
   const [nextWeeks, setNextWeeks] = React.useState(3)
   const [selectedDay, setSelectedDay] = React.useState(null)
   const nextLessons = React.useMemo(() => generateNextLessons(student.lessons, nextWeeks), [nextWeeks, student.lessons])
+  if (nextWeeks > 12){
+    setNotification("Maximum Number Of Weeks = 12 ")
+    setNextWeeks(12)
+  }
   const dates = React.useMemo(() => generateDates(nextWeeks), [nextWeeks])
   const lessonRef = React.useRef();
   const id = getCookie('userCookie')

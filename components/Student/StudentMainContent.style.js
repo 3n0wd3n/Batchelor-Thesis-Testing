@@ -87,7 +87,7 @@ export const StudentMCFontsSummary = styled(FontsHeaderBold)`
 
 export const StudentMCFontsBold = styled(FontsBold)`
     font-size: 1.5rem;
-    color: white;
+    color: ${Colors.white};
     text-shadow: -2px 2px 4px rgba(0, 0, 0, 0.25);
 `;
 
@@ -106,19 +106,26 @@ export const StudentMCFontsSectionItems = styled(FontsThin)`
     flex-direction: column;
     font-size: ${NormalFontSize}rem;
     color: ${Colors.white};
-    text-shadow: -2px 2px 4px rgba(0, 0, 0, 0.25);
+    /* text-shadow: -2px 2px 4px rgba(0, 0, 0, 0.25); */
     @media (max-width: 1200px) {
         font-size: ${SmallFontSize}rem;
     }
 `;
 
+export const StudentMCFontsSectionItemsContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+    gap: 1rem;
+`;
+
 export const StudentMCFontsSectionItem = styled.a`
     color: ${Colors.white};
     text-decoration: none;
-    font-weight: 400;
-    transition: .6s;
+    font-weight: 300;
+    transition: .3s;
     &:hover{
-        transform: scale(1.03);
+        color: ${Colors.darkGray};
     }
 `;
 
