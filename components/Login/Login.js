@@ -67,8 +67,8 @@ export default function LoginForm({ setData, setNotification }) {
                 </LoginButtonBottomContainer>
 
                 <LoginLabelStyled>
-                    <LoginInputCheckboxStyled type="checkbox" value={isParent} onChange={handleChange}></LoginInputCheckboxStyled>
                     <FontsExtraThin>login as representative</FontsExtraThin>
+                    <LoginInputCheckboxStyled type="checkbox" value={isParent} onChange={handleChange}></LoginInputCheckboxStyled>
                 </LoginLabelStyled>
 
                 <LoginButtonStyled onClick={() => sendData()}><FontsBold>login</FontsBold></LoginButtonStyled>
