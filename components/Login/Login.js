@@ -2,6 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import axios from 'axios'
 import Router from 'next/router'
+import Image from 'next/image'
+import loading from '../../public/loading.gif'
 import { setCookie } from 'cookies-next';
 import { FontsHeaderBold, FontsLight, FontsExtraThin, FontsBold } from '../CommonStyles'
 import { LoginButtonStyled, LoginInputStyled, LoginFormStyled, LoginLabelStyled, LoginInputCheckboxStyled, LoginButtonContainer, LoginButtonBottomContainer, LoginContainer } from './Login.style'
@@ -11,9 +13,10 @@ export default function LoginForm({ setData, setNotification }) {
     const [userName, setUserName] = useState("");
     const [userNumber, setNumber] = useState("");
     const [userPassword, setPassword] = useState("");
-
+    const [login, setLogin] = useState(false);
 
     function sendData() {
+        setLogin(true)
         axios('user', {
             method: 'PUT',
             data: {
@@ -28,6 +31,7 @@ export default function LoginForm({ setData, setNotification }) {
                     setData(data.data);
                     Router.push('/dashboard')
                 } else {
+                    setLogin(false)
                     // instead of this you should make user friendly modal
                     setNotification('Wrong credentials !')
                 }
@@ -72,6 +76,17 @@ export default function LoginForm({ setData, setNotification }) {
                 </LoginLabelStyled>
 
                 <LoginButtonStyled onClick={() => sendData()}><FontsBold>login</FontsBold></LoginButtonStyled>
+                {
+                    login
+                    ?
+                    <Image
+                        src={loading}
+                        width={200}
+                        height={200}
+                    />
+                    :
+                    <></>
+                }
             </LoginContainer>
 
 
