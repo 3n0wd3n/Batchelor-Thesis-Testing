@@ -86,10 +86,30 @@ const filterLessons = async (lessonIds, admin) => {
 export const getUser = async(filter, password) => {
   const usersDb = await findAllFromMongo(User, filter)
   let userDb = usersDb[0]
+  if (password === "") userDb = null
+  
   if (password) {
     await Promise.all(
       usersDb.map(async (user) => {
-        if (user && await bcrypt.compare(password, user.password)) userDb = user
+        console.log(await bcrypt.compare(password, user.password), password, user.password)
+        if (user.password.length > 25){
+          // hash
+          if (user && (await bcrypt.compare(password, user.password))) {
+            userDb = user
+          }
+          else {
+            userDb = null
+          }
+        }
+        else{
+          // just string
+          if (user && password === user.password) {
+            userDb = user
+          }
+          else {
+            userDb = null
+          }
+        }
       })
     )
   }

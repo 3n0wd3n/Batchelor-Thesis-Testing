@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 import { getCookie } from 'cookies-next';
-import { FaFolderOpen, FaPlusSquare, FaMinusSquare, FaTrash } from 'react-icons/fa'
+import { FaFolderOpen,  FaPlusCircle, FaMinusCircle, FaPlusSquare, FaMinusSquare, FaTrash } from 'react-icons/fa'
 import { FileContentRemoveFile, FileContentFilesWrapper, FileContentFile, FileContentBackButtonContainer, FileContentAddButtonContainer, FileContentUploadButton, FileContentInput, FileContentChooseFile, FileContentItem, FileContentItemContainer, FileContentAddContainer, FileContentContainer } from './FilesContent.style'
 
 export default function FileContent({ data, setData, student, setNotification }) {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [submit, setSubmit] = React.useState(false)
+  const [removedFile, setRemovedFile] = React.useState(null)
   const [add, setAdd] = React.useState(false)
   const id = getCookie('userCookie')
 
@@ -80,7 +82,7 @@ export default function FileContent({ data, setData, student, setNotification })
                 {student.files.map((file, index) =>
                   <FileContentFilesWrapper key={index}>
                     <FileContentFile href={`images/${file}`} target='_blank'>{file.slice(14,)}</FileContentFile>
-                    <FileContentRemoveFile onClick={() => removeFile(file)}>
+                    <FileContentRemoveFile onClick={() => (setSubmit(true), setRemovedFile(file))}>
                       <FaTrash />
                     </FileContentRemoveFile>
                   </FileContentFilesWrapper>
@@ -88,6 +90,25 @@ export default function FileContent({ data, setData, student, setNotification })
 
               </FileContentItemContainer>
             </FileContentContainer>
+            {
+              submit
+                ?
+                <StudentInfoAboveContainer>
+                    <AboveContainerAssurance>
+                        <span>Do you really want to remove this file: <span>{removedFile.slice(14,)}</span></span>
+                    </AboveContainerAssurance>
+                    <AboveContainerChoice>
+                        <div onClick={() => (removeFile(removedFile), setSubmit(false))}>
+                            <span>Yes, </span>I do !<FaPlusCircle />
+                        </div>
+                        <div onClick={() => setSubmit(false)}> 
+                            <span>No, </span>I don't !<FaMinusCircle />
+                        </div>
+                    </AboveContainerChoice>
+                </StudentInfoAboveContainer>
+              :
+                <></>
+            }
             <FileContentAddButtonContainer onClick={() => setAdd(prevState => !prevState)}>
               <FaPlusSquare />
             </FileContentAddButtonContainer>

@@ -5,7 +5,7 @@ import axios from 'axios'
 import { getCookie } from 'cookies-next';
 import { addDays } from './LessonChange';
 
-import { StudentKeyRemoveButton, StudentKeyRemoveLessonButton, StudentKeyRemoveAttribute, StudentRemoveAttribute, StudentPlanAttribute, StudentKeyInputAttributePlan, StudentPlansValues, PlanAttributes, StudentRemoveAttributes, StudentEditAttributes, StudentCheckInputAttribute, StudentKeyInputAttribute, StudentEditContainer, StudentPlanContent, StudentPlanValues, StudentInfoContainerOne, StudentInfoContainerTwo, StudentAttributes, StudentKeyAttribute, StudentValueAttribute } from './InfoContent.style'
+import { AboveContainerChoice, AboveContainerAssurance, StudentInfoAboveContainer, StudentKeyRemoveButton, StudentKeyRemoveLessonButton, StudentKeyRemoveAttribute, StudentRemoveAttribute, StudentPlanAttribute, StudentKeyInputAttributePlan, StudentPlansValues, PlanAttributes, StudentRemoveAttributes, StudentEditAttributes, StudentCheckInputAttribute, StudentKeyInputAttribute, StudentEditContainer, StudentPlanContent, StudentPlanValues, StudentInfoContainerOne, StudentInfoContainerTwo, StudentAttributes, StudentKeyAttribute, StudentValueAttribute } from './InfoContent.style'
 
 export const constructWeek = (lessons) => {
     const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
@@ -63,6 +63,7 @@ export default function InfoContent({ student, setData, setNotification }) {
     const [plan, setPlan] = React.useState(student.plan.map(plan => ({ value: plan, key: randomStringGen() })))
     const nameRef = React.useRef(null)
     const surnameRef = React.useRef(null)
+    const [submit, setSubmit] = React.useState(false)
     
     const addArrayAttribute = () => {
         setPlan(prevPlan => [...prevPlan, { value: 'set plan...', key: randomStringGen() }])
@@ -179,7 +180,7 @@ export default function InfoContent({ student, setData, setNotification }) {
                                 <StudentKeyAttribute>from: </StudentKeyAttribute><StudentValueAttribute changed={day.changed}>{`${moment(day.date).format('HH:mm')}`}</StudentValueAttribute>
                                 <StudentKeyAttribute>to: </StudentKeyAttribute><StudentValueAttribute changed={day.changed}>{`${moment(day.endDate).format('HH:mm')}`}</StudentValueAttribute>
                                 <StudentKeyAttribute>
-                                    <StudentKeyRemoveLessonButton onClick={() => console.log("click")}>
+                                    <StudentKeyRemoveLessonButton onClick={() => console.log("to do")}>
                                         {
                                             edit &&
                                             <FaTrash />
@@ -194,8 +195,26 @@ export default function InfoContent({ student, setData, setNotification }) {
                 {
                     edit &&
                     <StudentRemoveAttribute >
-                        <StudentKeyRemoveAttribute onClick={() => removeStudent(student.id)}>disable</StudentKeyRemoveAttribute>
-
+                        <StudentKeyRemoveAttribute onClick={() => setSubmit(true)}>disable</StudentKeyRemoveAttribute>
+                        {
+                            submit
+                                ?
+                                <StudentInfoAboveContainer>
+                                    <AboveContainerAssurance>
+                                        <span>Do you really want to disable this student: <span>{student.firstName}</span></span>
+                                    </AboveContainerAssurance>
+                                    <AboveContainerChoice>
+                                        <div onClick={() => (removeStudent(student.id), setSubmit(false))}>
+                                            <span>Yes, </span>I do !<FaPlusCircle />
+                                        </div>
+                                        <div onClick={() => setSubmit(false)}> 
+                                            <span>No, </span>I don't !<FaMinusCircle />
+                                        </div>
+                                    </AboveContainerChoice>
+                                </StudentInfoAboveContainer>
+                                :
+                                <></>
+                        }
                     </StudentRemoveAttribute>
                 }
             </StudentInfoContainerTwo>
