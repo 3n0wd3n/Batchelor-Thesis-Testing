@@ -20,8 +20,13 @@ Od začátku školního roku 2021/2022 se moje přítelkyně vydala cestou brig�
 
     username: admin
     passwd: admin
+    
+-Přihlášení do studenta > 18-
 
--Přihlášení do usera-
+    username: jirnek
+    passwd: jirka
+
+-Přihlášení do studenta < 18-
 
     username: jakhaj
     passwd: kuba
