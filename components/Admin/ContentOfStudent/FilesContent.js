@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios'
 import { getCookie } from 'cookies-next';
 import { FaFolderOpen,  FaPlusCircle, FaMinusCircle, FaPlusSquare, FaMinusSquare, FaTrash } from 'react-icons/fa'
+import { AboveContainerChoice, AboveContainerAssurance, StudentInfoAboveContainer } from './InfoContent.style'
 import { FileContentRemoveFile, FileContentFilesWrapper, FileContentFile, FileContentBackButtonContainer, FileContentAddButtonContainer, FileContentUploadButton, FileContentInput, FileContentChooseFile, FileContentItem, FileContentItemContainer, FileContentAddContainer, FileContentContainer } from './FilesContent.style'
 
 export default function FileContent({ data, setData, student, setNotification }) {
