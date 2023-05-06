@@ -170,19 +170,19 @@ Jedná se o soubory __*.gitignore*__, __*.next.config.js*__, __*package-lock.jso
 >
 > - Budeme potřebova potřebovat prostředí, ve kterém si kod zobrazíme. Já jsem celou bakalářskou práci psal ve Visual Studio Code a odkaz na stažení je zde [VS CODE](https://code.visualstudio.com/download) 
 >
-> - Teď je potřeba aplikaci otevřít, takže najedeme do GitHub Desktop a vybereme adresář "Batchelor-Thesis" a pravým vybereme "Open in Visual Studio Code" ![image](https://user-images.githubusercontent.com/47132583/232568957-fe49eedf-ac11-460b-b585-acddd0f13a0b.png)
+> - Teď je potřeba aplikaci otevřít, takže najedeme do GitHub Desktop a vybereme adresář "Batchelor-Thesis" nebo "Batchelor-Thesis-Testing" a pravým vybereme "Open in Visual Studio Code" ![image](https://user-images.githubusercontent.com/47132583/232568957-fe49eedf-ac11-460b-b585-acddd0f13a0b.png)
 > 
 > - Ještě předtím, než budeme pokračovat dál, je potřeba stáhnout ještě jednu věc, a to je Node.js [NodeJS](https://nodejs.org/en/download)
 >
 > - Teď když máme otevřené VS CODE a stažený NODEJS, tak přejdeme do terminálu, který je ve VS CODU zabudovaný ![image](https://user-images.githubusercontent.com/47132583/232570676-d0aa6c30-3298-47f7-b870-c3d8497e7476.png) a začneme stahovat potřebné balíčky. To jak a co budeme stahovat už se nachází pod tímto úvodním manuálem.
 
-První příkaz, který je třeba udělat je:
+První příkaz, který je třeba udělat je v případě Batchelor-Thesis (v případě, že spouštíme Batchelor-Thesis-Testing, tak není potřeba = už jsme přímo v app):
 
     cd BT-master(nextjs)/app
 
 protože budeme instalovat baláčky z __*package.json*__ , které je možné vidět v souboru.
  
-Pro spuštění aplikace je nutné mít stažené všechny potřebné baličky které lze najít v souboru __*package.json*__, který se nachází v adresáří __*~/BT-master(nextjs)/app/package.json*__. Je potřeba stahovat tyto balíčky do cesty __*BT-master(nextjs)/app*__
+Pro spuštění aplikace je nutné mít stažené všechny potřebné baličky které lze najít v souboru __*package.json*__, který se nachází v adresáří __*~/BT-master(nextjs)/app/package.json*__ (opět, jen v případě, že jsme ve složce "Batchelor-Thesis"). Je potřeba stahovat tyto balíčky do cesty __*BT-master(nextjs)/app*__
 
 ![image](https://user-images.githubusercontent.com/47132583/230058864-d9761c91-ffa6-43bd-abd0-922f62596e33.png)
 
@@ -192,7 +192,7 @@ Stahujeme je pomocí příkazu:
     npm install <název balíčku> 
     (taky je možnost použít --> npm i <název balíčku> <název balíčku> --- <název balíčku> pro stahování více balíčku současně)
     
-Potom už jen stačí dostat se na již zmíněnou cestu __*~/BT-master(nextjs)/app/*__, kde zadáme do konzole příkaz 
+Potom už jen stačí dostat se na již zmíněnou cestu __*~/BT-master(nextjs)/app/*__ (opět, jen v případě, že jsme ve složce "Batchelor-Thesis"), kde zadáme do konzole příkaz: 
     
     npm run dev 
 
