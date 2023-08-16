@@ -14,6 +14,10 @@ Od začátku školního roku 2021/2022 se moje přítelkyně vydala cestou brig�
 
 [TESTOVACÍ ODKAZ přes Vercel](https://batchelor-thesis-testing.vercel.app/dashboard)
 
+[VERCEL](https://vercel.com/3n0wd3n/batchelor-thesis-testing)
+
+[MONGODB - ATLAS](https://cloud.mongodb.com/v2/6204f3dc0191d10e7ac6c9a2#/metrics/replicaSet/63ef6f8ae72b2571f7006764/explorer/BMEnglish/apologies/find)
+
 **Přihlašovací údaje pro testování**
 
 -Přihlášení do admina-
